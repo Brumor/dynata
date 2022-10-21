@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+</head>
+<style>
+  body {
+background-color: pink;
+align-items: center;
+justify-content: center;
+display: flex;
+    flex-direction: column;
+}
+
+.products {
+display: grid;
+grid-template-columns: auto auto auto auto;
+gap: 10px;
+background-color: pink;
+padding: 10px;
+}
+
+.product-box {
+font: 13px/23px "Raleway", Arial, sans-serif;
+color: rgb(247, 93, 119);
+padding: 40px 0;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.container {
+margin: 0 auto;
+width: 300px;
+height: 300px;
+background: white;
+border-radius: 3px;
+}
+
+.information {
+text-align: center;
+margin-top: 18px;
+}
+
+.name {
+font-size: 35px;
+}
+
+.title {
+font-size: 35px;
+font-weight: bold;
+color: rgb(247, 93, 119);
+text-align: center;
+}
+
+.button {
+text-decoration: none;
+color: white;
+font-size: 16px;
+font-weight: 500;
+padding: 12px;
+border-radius: 5px;
+}
+
+img {
+width: 40vh;
+height: 80%;
+object-fit: cover;
+}
+
+h1 {
+  font-size: 36px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+</style>
+<body>
+  <img src="https://i.ibb.co/CsYRSbG/DALL-E-2022-10-21-15-20-03-shopping-cart-with-super-cool-ping-pong-bats-in-futuristic-realistic-styl.png" />
+  <h1 id="cartTotal">Your total: 999 SEK</h1><br/>
+  <button id="genderCheck">Check to see if you're a woman, our AI will know depending on how you click</button> <br>
+  <button id="buyButton">Buy</button> <br>
+  
+</body>
+<script>
+  let counter = 0;
+
+  const genderCheckButton = document.getElementById("genderCheck")
+  const buyButtonButton = document.getElementById("buyButton")
+  const cartTotalText = document.getElementById("cartTotal")
+  genderCheckButton.onclick = () => {
+    if (counter % 2 === 0) {
+      window.alert("Sorry, you're a man")
+    } else if (counter % 2 !== 0) {
+      window.alert("Congrats!!! You're a wamen, you get 99% off!")
+      cartTotalText.innerText = "Your total: 0.001SEK"
+    }
+    counter++
+  }
+  buyButtonButton.onclick = () => {
+    window.open('./buyComplete.html', 'name', 'width=1000,height=800')
+  }
+</script>
+</html>

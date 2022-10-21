@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+</head>
+<style>
+
+body {
+    background-color: pink;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .products {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  background-color: pink;
+  padding: 10px;
+}
+
+.product-box {
+  font: 13px/23px "Raleway", Arial, sans-serif;
+  color: rgb(247, 93, 119);  
+  padding: 40px 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  background: white;
+  border-radius: 3px;
+}
+
+.information {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.name {
+  font-size: 22px;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: bold;
+  color: rgb(247, 93, 119);  
+  text-align: center;
+}
+
+.button {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+ img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+  }
+
+
+  #snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+</style>
+<body>
+
+    <div class="title">
+        Ping Pong Shop
+    </div>
+
+    <div class="products">
+
+
+
+        <a class="link-one" href="/cart.html">
+        <div class="product-box">
+            <div class="container">
+                <img src="https://i.pinimg.com/originals/86/fd/4f/86fd4fa46db67790e8dd394cb7ee952c.jpg" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong BPW</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+        <a class="link-one" href="/cart.html">
+          <div class="product-box">
+            <div class="container">
+                <img src="https://rlv.zcache.com/funny_ping_pong_paddle_for_table_tennis_player-r9bc448df703c4f00bdaea84d21b04713_zvmtu_736.webp?rlvnet=1" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong Balls</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+          <a class="link-one" href="/cart.html">
+          <div class="product-box">
+            <div class="container">
+                <img src="https://rlv.zcache.com/funny_face_table_tennis_racket_ping_pong_paddle-r78acc739895c44a9bdfd94d495b8a5f3_zvdz5_736.webp?rlvnet=1" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong P&W</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+          <a class="link-one" href="/cart.html">
+          <div class="product-box">
+            <div class="container">
+                <img src="https://ae01.alicdn.com/kf/H265edc97959b46ae8673a7af1f8ef0aa4/table-tennis-Funny-Mini-Table-Tennis-Racket-With-2-Ping-Pong-Bats-Balls-Kids-Children-Toy.jpg_.webp" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong P&B</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+          <a class="link-one" href="/cart.html">
+          <div class="product-box">
+            <div class="container">
+                <img src="data:image/jpeg;base64,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" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong O&B</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+          <a class="link-one" href="/cart.html">
+          <div class="product-box">
+            <div class="container">
+                <img src="https://rlv.zcache.com/girl_power_ping_pong_paddle-rc5518cda014940ac81f62d18268a8ac4_zvdz5_736.webp?rlvnet=1" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong BP</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+          <a class="link-one" href="/cart.html">
+          <div class="product-box">
+            <div class="container">
+                <img src="https://rlv.zcache.com/red_funny_face_ping_pong_paddle-r222749e2c82e41e899434480eb25fd92_zvdz5_367.jpg?rlvnet=1&bg=0xFFFFFF" alt="photo"/>
+                <div class="information">
+                <div class="name">Ping Pong BG</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+        <a class="link-one" href="/cart.html">
+            <div class="product-box">
+            <div class="container">
+              <img src="https://www.askideas.com/media/20/Laughing-Face-Funny-Table-Tennis-Bat-Cartoon-Image.jpg" alt="photo"/>
+              <div class="information">
+                <div class="name">Ping Pong Light</div>       
+              </div> 
+            </div> 
+          </div> 
+        </a>
+
+
+      </div>
+
+
+<!--         <button onclick="myFunction()">Show Snackbar</button>
+ -->
+
+        <div id="snackbar">Added to cart..</div>
+
+
+        <script>
+            function myFunction() {
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            }
+            </script>
+  
+</body>
+</html>

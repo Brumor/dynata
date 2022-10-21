@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  }
+  *, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  *, *:before, *:after {
+	 box-sizing: border-box;
+	 margin: 0;
+	 padding: 0;
+}
+ #continueButton {
+  visibility: hidden;
+ }
+ .buttons {
+	 margin-top: 50px;
+	 text-align: center;
+	 border-radius: 30px;
+}
+ .blob-btn {
+	 z-index: 1;
+	 position: relative;
+	 padding: 20px 46px;
+	 margin-bottom: 30px;
+	 text-align: center;
+	 text-transform: uppercase;
+	 color: #0505a9;
+	 font-size: 16px;
+	 font-weight: bold;
+	 background-color: transparent;
+	 outline: none;
+	 border: none;
+	 transition: color 0.5s;
+	 cursor: pointer;
+	 border-radius: 30px;
+}
+ .blob-btn:before {
+	 content: "";
+	 z-index: 1;
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 width: 100%;
+	 height: 100%;
+	 border: 2px solid #0505a9;
+	 border-radius: 30px;
+}
+ .blob-btn:after {
+	 content: "";
+	 z-index: -2;
+	 position: absolute;
+	 left: 3px;
+	 top: 3px;
+	 width: 100%;
+	 height: 100%;
+	 transition: all 0.3s 0.2s;
+	 border-radius: 30px;
+}
+ .blob-btn:hover {
+	 color: #fff;
+	 border-radius: 30px;
+}
+ .blob-btn:hover:after {
+	 transition: all 0.3s;
+	 left: 0;
+	 top: 0;
+	 border-radius: 30px;
+}
+ .blob-btn__inner {
+	 z-index: -1;
+	 overflow: hidden;
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 width: 100%;
+	 height: 100%;
+	 border-radius: 30px;
+	 background: #fff;
+}
+ .blob-btn__blobs {
+	 position: relative;
+	 display: block;
+	 height: 100%;
+	 filter: url('#goo');
+}
+ .blob-btn__blob {
+	 position: absolute;
+	 top: 2px;
+	 width: 25%;
+	 height: 100%;
+	 background: #0505a9;
+	 border-radius: 100%;
+	 transform: translate3d(0, 150%, 0) scale(1.7);
+	 transition: transform 0.45s;
+}
+ @supports (filter: url('#goo')) {
+	 transform: translate3d(0, 150%, 0) scale(1.4);
+}
+ .blob-btn__blob:nth-child(1) {
+	 left: 0%;
+	 transition-delay: 0s;
+}
+ .blob-btn__blob:nth-child(2) {
+	 left: 30%;
+	 transition-delay: 0.08s;
+}
+ .blob-btn__blob:nth-child(3) {
+	 left: 60%;
+	 transition-delay: 0.16s;
+}
+ .blob-btn__blob:nth-child(4) {
+	 left: 90%;
+	 transition-delay: 0.24s;
+}
+ .blob-btn:hover .blob-btn__blob {
+	 transform: translateZ(0) scale(1.7);
+}
+ @supports (filter: url('#goo')) {
+	 transform: translateZ(0) scale(1.4);
+}
+ 
+
+.buttons {
+  margin-top: 50px;
+  text-align: center;
+  border-radius:30px;
+}
+
+  .handscanner {
+    display: flex;
+    flex-direction: column;
+    background-color: darkmagenta;
+    align-items: center;
+  }
+  .handscanner > img {
+    display: flex;
+    max-height: 80vh;
+    width: 40vh;
+  }
+  #loading-bar {
+    visibility: hidden;
+    display: none;
+  }
+  .navigation-bar {
+  margin: 0;
+  height: 10vh;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.background-one {
+  background-color: #151515;
+}
+
+.background-two {
+  background-color: #151515;
+}
+
+.background-three {
+  background-color: #151515;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+a {
+  font-family: "Bungee", cursive;
+  font-size: 2.5em;
+}
+
+.link-one {
+  color: #53d9d1;
+  transition: color 1s cubic-bezier(0.32, 0, 0.67, 0);
+  line-height: 1em;
+}
+
+.link-one:hover {
+  color: #111;
+  transition: color 1s cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Thanks Chris Coyier, you got my back always. https://css-tricks.com/different-transitions-for-hover-on-hover-off/ */
+}
+
+.link-one::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #53d9d1;
+
+  clip-path: circle(0% at 50% calc(50%));
+  transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.link-one:hover::before {
+  clip-path: circle(100% at 50% 50%);
+}
+
+.link-one::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #151515;
+
+  clip-path: polygon(
+    40% 0%,
+    60% 0%,
+    60% 0%,
+    40% 0%,
+    40% 100%,
+    60% 100%,
+    60% 100%,
+    40% 100%
+  );
+
+  /*
+  Didn't look consistently awesome enough
+  across different viewing widths.
+  clip-path: polygon(
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%,
+    50% 50%
+  );
+  */
+  transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.link-one:hover::after {
+  /*
+  clip-path: polygon(
+    20% 45%,
+    10% 40%,
+    30% 30%,
+    40% 35%,
+    60% 35%,
+    70% 30%,
+    90% 40%,
+    80% 45%,
+    60% 35%,
+    40% 35%,
+    20% 45%,
+    20% 55%,
+    10% 60%,
+    30% 70%,
+    40% 65%,
+    60% 65%,
+    70% 70%,
+    90% 60%,
+    80% 55%,
+    60% 65%,
+    40% 65%,
+    20% 55%
+  );
+  */
+  clip-path: polygon(
+    40% 10%,
+    60% 10%,
+    60% 35%,
+    40% 35%,
+    40% 90%,
+    60% 90%,
+    60% 65%,
+    40% 65%
+  );
+}
+
+.link-two {
+  color: #f27b9b;
+  transition: color 1s cubic-bezier(0.32, 0, 0.67, 0);
+}
+
+.link-two:hover {
+  color: #111;
+  transition: color 1s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.link-two::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  clip-path: polygon(
+    0% -20%,
+    100% -30%,
+    100% -10%,
+    0% 0%,
+    0% 130%,
+    100% 120%,
+    100% 100%,
+    0% 110%
+  );
+  background-color: #f27b9b;
+
+  transition: clip-path 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.link-two:hover::before {
+  clip-path: polygon(
+    0% 10%,
+    100% 0%,
+    100% 20%,
+    0% 30%,
+    0% 100%,
+    100% 90%,
+    100% 70%,
+    0% 80%
+  );
+}
+
+.link-two::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 5ch;
+  height: 5ch;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%) rotate(0deg) scale(0);
+  transition: transform 1s ease;
+
+  background-color: #f27b9b;
+}
+
+.link-two:hover::after {
+  transform: translate(50%, -50%) rotate(135deg) scale(1);
+}
+
+.link-three {
+  color: #eb7132;
+}
+
+.link-three::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  transform: translate(0, -50%) scaleY(0);
+  transition: transform 1s ease;
+  mix-blend-mode: difference;
+
+  clip-path: polygon(
+    20% 60%,
+    100% 60%,
+    100% 40%,
+    20% 40%,
+    20% 0%,
+    60% 0%,
+    60% 20%,
+    20% 20%
+  );
+
+  background-color: #eb7132;
+}
+
+.link-three:hover::after {
+  transform: translate(0, 0%) scaleY(1);
+}
+
+.link-three::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 100%;
+  bottom: 0%;
+  right: 0%;
+  transform: translate(0, 50%) scaleY(0);
+  transition: transform 1s ease;
+  mix-blend-mode: difference;
+
+  clip-path: polygon(
+    80% 40%,
+    0% 40%,
+    0% 60%,
+    80% 60%,
+    80% 100%,
+    40% 100%,
+    40% 80%,
+    80% 80%
+  );
+
+  background-color: #eb7132;
+}
+
+.link-three:hover::before {
+  transform: translate(0%, 0%) scaleY(1);
+}
+
+</style>
+<body>
+<div class="navigation-bar" >
+  <div class="background-one">
+    <div class="link-container">
+      <a class="link-one" href="/shop.html">Shop</a>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="handscanner">
+    <image src="https://media.tenor.com/EALuqVWW9IUAAAAC/fingerprint.gif" />
+    <image id="loading-bar" src="https://media.tenor.com/9uwdc8zTDMEAAAAC/loading-bar.gif" />
+      <button id="scanButton" class="blob-btn">
+        Scan hand
+        <span class="blob-btn__inner">
+          <span class="blob-btn__blobs">
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+          </span>
+        </span>
+      </button>
+      <a id="continueButton" class="blob-btn" href="/journey.html">
+        Continue
+        <span class="blob-btn__inner">
+          <span class="blob-btn__blobs">
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+          </span>
+        </span>
+      </a>
+  </div>
+  
+</body>
+  <script>
+    const button = document.getElementById("scanButton")
+    const continueButton = document.getElementById("continueButton")
+    const loadBar = document.getElementById("loading-bar")
+    button.onclick = () => {
+      loadBar.style.visibility = "visible"
+      button.style.visibility = "hidden"
+      button.style.display = "none"
+      loadBar.style.display = "block"
+      setTimeout(() => {
+        loadBar.style.display = "none"
+        loadBar.style.visibility = "hidden"
+        continueButton.style.visibility = "visible"
+      }, 6000)
+    }
+  </script>
+</html>
